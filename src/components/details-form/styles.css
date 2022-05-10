@@ -1,0 +1,38 @@
+form {
+    font-size: 2rem;
+}
+
+input {
+    height: 2rem;
+    width: 300px;
+}
+
+select {
+    height: 2rem;
+    width: 305px;
+}
+
+.has-error {
+    border: 1px solid rgb(228, 63, 63);
+    color: rgb(228, 63, 63);
+}
+
+fieldset {
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    border: none;
+}
+
+.input-container {
+    position: relative;
+}
+.error {
+    color: rgb(228, 63, 63);
+    padding-top: 10px;
+    font-size: 14px;
+    position: absolute;
+    display: inline-block;
+    left: 0;
+    top: 90%;
+}

@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 10;
+  flex-wrap: wrap;
+}
+
+.meeting-rooms{
+  display: flex;
+  flex-direction: column;
+  height: 30%;
+  border-top: 1px solid white;
+}
+
+.meeting-room {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 150px;
+  height: 150px;
+}
+
+.meeting-room.occupied {
+  color: cornflowerblue
+}

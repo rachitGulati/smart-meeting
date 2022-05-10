@@ -1,0 +1,8 @@
+.header {
+    text-align: center;
+}
+
+.details-container {
+    display: flex;
+    justify-content: center;
+}

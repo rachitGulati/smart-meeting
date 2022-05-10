@@ -1,0 +1,13 @@
+.button {
+    padding: 20px;
+    background-color: cornflowerblue;
+    font-size: 1.5rem;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.button:hover {
+    opacity: 0.8;
+}

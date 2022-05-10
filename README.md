@@ -1,46 +1,105 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
+### How to run project
+`yarn install && yarn start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:3000](http://localhost:3000. to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+### Functional Requirements
+1. First page should show info about Buildings, Meeting Rooms and Meetings (Refer
+Mock UI)
+2. User should be able to click on Add meeting button and move on to second page
+where it can take relevant inputs to add a meeting. Inputs such as Date, Start and
+End time, Building etc. (refer mock UI)
+3. On clicking next, show user the list of meeting rooms in that building. User will select
+a meeting room and confirms the booking by clicking on ‘Save’ button.
+4. [Optional – good too have] Show only available meeting rooms (from step 3) for the
+specified date and time (from step 2).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### Non Functional Requirements
+1. Should auto fetch and update meeting rooms and building. (This will update whole application state to server state)
+2. Auto update existing UI with some interval fashion based on data available for the meeting rooms in first fetch (This will only update client state)
+3. Proper validation for form submission.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Interfaces to interact within the application
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+interface IBuilding {
+    id: number;
+    name: string;
+    meetingRooms?: IMeetingRoom[];
+}
 
-### `npm run eject`
+interface IMeeting {
+    id: number;
+    title?: string;
+    date: string;
+    startTime: string;
+    endTime: string;
+    meetingRoom?: IMeetingRoom
+}
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+interface IMeetingRoom {
+    id: number;
+    name: string;
+    floor?: number;
+    building?: IBuilding
+    meetings?: IMeeting[];
+    isAvailable?: boolean;
+}
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+interface IRoomState {
+    building: string;
+    startTime: string;
+    endTime: string;
+    date: string;
+    title: string;
+}
+interface IMeetingMeta {
+    todayMeetingCount: number;
+    onGoingMeetingCount: number;
+};
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+interface IAppData { 
+    buildings: IBuilding[],
+    meetingRooms: IMeetingRoom[],
+    meetingsMeta: IMeetingMeta,
+};
+```
+Mutations:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Add a meeting in meeting room
 
-## Learn More
+```
+mutation {
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    Meeting(
+      id: 1
+      title: "Test Booking"
+      date: "05/10/2022"
+      startTime: "00:00"
+      endTime: "01:00"
+      meetingRoomId: 1
+    ) {
+      id
+      title
+    }
+  }
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Add meetingroom in building
+```
+mutation {
+  MeetingRoom(
+    id: 10
+    name: "Testing 1"
+    floor: 2
+    buildingId: 2
+  ) {
+    id
+    name
+  }
+}
+```

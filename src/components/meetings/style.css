@@ -1,0 +1,14 @@
+
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 10;
+    flex-wrap: wrap;
+}
+
+.meetings {
+    display: flex;
+    flex-direction: column;
+    height: 30%;
+    border-top: 1px solid white;
+}

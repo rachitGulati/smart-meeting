@@ -1,0 +1,29 @@
+.title{
+    text-align: center;
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 600px;
+    overflow-y: scroll;
+}
+
+.meeting-room-container {
+    height: 200px;
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.meeting-room-container.selected {
+    background: #2c2e31;
+}
+
+.button-wrapper {
+    position: absolute;
+    width: 200px;
+    top: calc(100% - 100px);
+    left: calc(50% - 100px);
+}
